@@ -3,6 +3,7 @@ const router = express.Router();
 const Twitter = require("twitter-lite");
 
 router.post('/get-user-tweets', async (req, res, next) => {
+    console.log("hola")
     const { screen_name, count }=req.body;
     
     try {
@@ -17,8 +18,8 @@ router.post('/get-user-tweets', async (req, res, next) => {
     });
         
     let tweets= await app.get('statuses/user_timeline', {
-        screen_name,
-        count
+        screen_name: "jack",
+        count: 15,
       })
         delete tweets["_headers"];
         res.status(200).json(tweets);    
